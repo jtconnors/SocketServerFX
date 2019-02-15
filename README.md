@@ -8,7 +8,7 @@ This application is written in Java using the JavaFX API.  It represents the ser
    - send and receive text messages from a connected socket
    - retrieve sent and received messages
 
-It is typically used in conjuntion with a client-side JavaFX UI application called ```SocketClientFX```.
+It is typically used in conjunction with a client-side JavaFX UI application called ```SocketClientFX```.
 It can be found here: https://github.com/jtconnors/SocketClientFX
 
 This latest version of the source code is tagged ```1.0-JDK11-maven```.  It is modularized and as its name suggests, works with JDK11
@@ -19,8 +19,8 @@ Of note, the following maven goals can be executed:
    - ```mvn clean```
    - ```mvn dependency:copy-dependencies``` - to pull down dependent ```javafx``` and ```com.jtconnors.socket``` modules
    - ```mvn compile``` - to build the application
-   - ```mvn jar:jar``` - to create the ```SocketServerFX``` module as a jar file
-   - ```mvn exec:exec``` to run the application
+   - ```mvn package``` - to create the ```SocketServerFX``` module as a jar file
+   - ```mvn exec:java``` to run the application
    
 Furthermore, 3 additional ```.BAT``` files are provided:
    - ```run.bat``` - batch file to run the applications from the module path
