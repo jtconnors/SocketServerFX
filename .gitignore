@@ -1,2 +1,5 @@
 target/
 image/
+appimage/
+installer/
+.DS_Store
