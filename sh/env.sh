@@ -16,15 +16,16 @@ PROJECTDIR=..
 # native platform
 #
 PLATFORM=mac
-INSTALLER_TYPE=dmg
 
 #
 # Application specific variables
 #
 PROJECT=SocketServerFX
+VERSION=11.0
 MAINMODULE=socketserverfx
 MAINCLASS=com.jtconnors.socketserverfx.SocketServerFX
-MAINJAR=SocketServerFX-11.0.jar
+MAINJAR=$PROJECT-$VERSION.jar
+INSTALLERNAME=$PROJECT-$VERSION
 LAUNCHER=$PROJECT
 
 #
