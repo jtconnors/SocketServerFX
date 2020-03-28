@@ -11,8 +11,7 @@ This application is written in Java using the JavaFX API.  It represents the ser
 It is typically used in conjunction with a client-side JavaFX UI application called ```SocketClientFX```.
 It can be found here: https://github.com/jtconnors/SocketClientFX
 
-This latest version of the source code is tagged ```1.0-JDK11-maven```.  It is modularized and as its name suggests, works with JDK11
-and is built with the ```apache maven``` build lifecycle system.
+This version of the source code is tagged ```1.0-JDK14-maven```.  As its name suggests, it is specific to JDK 14 and can be built with the ```apache maven``` build lifecycle system. It uses the ```jdk.incubator.jpackage``` module autilities whose API has not been finalized and is subject to change.  As such, the scripts contained in this project will insist that JDK 14 be used because subsequent ```jpackage``` releases may be incompatible.
 
 Of note, the following maven goals can be executed:
 
@@ -23,7 +22,7 @@ Of note, the following maven goals can be executed:
    - ```mvn exec:java``` to run the application
    
 Furthermore, additional ```.sh``` and ```.ps1``` files are provided in the ```sh/```
-and ```ps1\``` directories respectively:
+and ```ps1\``` directories respectively. Prior to runnig these scripts the ```JAVA_HOME``` environment variable must be set to a valid JDK 14 runtime:
    - ```sh/run.sh``` or ```ps1\run.ps1``` - script file to run the application from the module path
    - ```sh/run-simplified.sh``` or ```ps1\run-simplified.ps1``` - alternative script file to run the application, determines main class from ```SocketClientFX``` module
    - ```sh/link.sh``` or ```ps1\link.ps1``` - creates a runtime image using the ```jlink``` utility
@@ -36,10 +35,10 @@ Notes:
    - These scripts have a few available command-line options.  To print out
 the options, add ```-?``` or ```--help``` as an argument to any script.
    - These scripts share common properties that can be found in ```env.sh``` or ```env.ps1```.  These may need to be slightly modified to match  your specific configuration.
-   - In order to generate ```EXE``` or ```MSI``` installers for Windows, ISSC and/or WiX toolkits must be installed respectively and placed on the %PATH% variable.
 
 See also:
 
 - SocketClientFX: https://github.com/jtconnors/SocketClientFX
 - MultiSocketServerFX: https://github.com/jtconnors/MultiSocketServerFX
 - maven-com.jtconnors.socket: https://github.com/jtconnors/maven-com.jtconnors.socket
+
