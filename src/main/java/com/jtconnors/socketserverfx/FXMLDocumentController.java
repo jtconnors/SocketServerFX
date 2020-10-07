@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.jtconnors.socketserverfx;
 
 import com.jtconnors.socket.DebugFlags;
@@ -23,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import com.jtconnors.socketfx.FxSocketServer;
 
 
@@ -54,12 +50,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label connectedLabel;
     
-    private final static Logger LOGGER =
+    private static final Logger LOGGER =
             Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
 
     private ObservableList<String> rcvdMsgsData;
     private ObservableList<String> sentMsgsData;
-    private ListView lastSelectedListView;
+    private ListView<String> lastSelectedListView;
+    private Tooltip portTooltip;
 
     private boolean isConnected;
 
@@ -146,14 +143,19 @@ public class FXMLDocumentController implements Initializable {
             }
         });
 
-        Runtime.getRuntime().addShutdownHook(new ShutDownThread());
+        portTooltip = new Tooltip("Port number cannot be modified once\n" +
+        "the first connection attempt is initiated.\n" +
+        "Restart application in order to change.");
 
-        /*
-         * Uncomment to have autoConnect enabled at startup
-         */
-//        autoConnectCheckBox.setSelected(true);
-//        displayState(ConnectionDisplayState.WAITING);
-//        connect();
+        portTextField.textProperty().addListener((obs, oldText, newText) -> {
+            try {
+                Integer.parseInt(newText);
+            } catch (NumberFormatException e) {
+                portTextField.setText(oldText);
+            }
+        });
+
+        Runtime.getRuntime().addShutdownHook(new ShutDownThread());
     }
 
     class ShutDownThread extends Thread {
@@ -226,6 +228,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleConnectButton(ActionEvent event) {
         displayState(ConnectionDisplayState.WAITING);
+        portTextField.setEditable(false);
+        portTextField.setTooltip(portTooltip);
         connect();
     }
 
@@ -238,6 +242,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleAutoConnectCheckBox(ActionEvent event) {
         if (autoConnectCheckBox.isSelected()) {
+            portTextField.setEditable(false);
+            portTextField.setTooltip(portTooltip);
             if (isConnected) {
                 displayState(ConnectionDisplayState.AUTOCONNECTED);
             } else {
