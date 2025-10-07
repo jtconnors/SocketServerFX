@@ -11,13 +11,13 @@ This application is written in Java using the JavaFX API.  It represents the ser
 It is typically used in conjunction with a client-side JavaFX UI application called ```SocketClientFX```.
 It can be found here: https://github.com/jtconnors/SocketClientFX
 
-This version of the source code is tagged ```1.1-JDK21-maven```.  As its name suggests, it is specific to JDK 21 and can be built with the ```apache maven``` build lifecycle system. Since JDK 16, the jpackage API has been standardized, and as such the scripts contained in this project could be modified to build with and run with JDKs from JDK 16 onwards.  Subsequent releases to JDK 21 have not been tested with this version of the project.
+This version of the source code is tagged ```1.1-JDK25-maven```.  As its name suggests, it is specific to JDK 25 and can be built with the ```apache maven``` build lifecycle system. Since JDK 16, the jpackage API has been standardized, and as such the scripts contained in this project could be modified to build with and run with JDKs from JDK 16 onwards.  Subsequent releases to JDK 25 have not been tested with this version of the project.
 
 This project works on Windows, MacOS or Linux.
 
 **Requirements:**
-1. Your default JDK should point to a valid JDK 21 runtime in your ```PATH```.
-2. Prior to running any of the scripts in this project, either the ```JAVA_HOME``` or ```$env:JAVA_HOME``` (depending upon the platform in question) environment variable must be set to a valid JDK 21 runtime.
+1. Your default JDK should point to a valid JDK 25 runtime in your ```PATH```.
+2. Prior to running any of the scripts in this project, either the ```JAVA_HOME``` or ```$env:JAVA_HOME``` (depending upon the platform in question) environment variable must be set to a valid JDK 25 runtime.
 3.  In order to generate ```EXE``` or ```MSI``` installers for Windows using the scripts in this project, the WiX toolkit version 3.0 or greater must be installed and placed on the ```PATH```.
 4. For certain Linux distributions (e.g. Oracle Linux ...) additional tooling, like for example ```rpmbuild```, may be required in order to fully utilize the ```jpackage``` utility.
 
@@ -44,7 +44,7 @@ Furthermore, additional ```.sh``` and ```.ps1``` files are provided in the ```sh
 
 Notes:
    - These scripts have a few available command-line options.  To print out
-the options, add ```-?``` or ```--help``` as an argument to any script.
+the options, add ```--help``` as an argument to any script.
    - These scripts share common properties that can be found in ```env.sh``` or ```env.ps1```.  These may need to be slightly modified to match  your specific configuration.
    - A sample ```Microsoft.PowerShell_profile.ps1``` file has been included to help configure a default Powershell execution environment.  A similar file can be generated specific to environments appropriate for running the ```bash(1)``` shell with a ```.bash_login``` or ```.bash_profile``` file.
 
